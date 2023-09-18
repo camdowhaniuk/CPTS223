@@ -1,33 +1,32 @@
-/*
-ADVANTAGES/DISADVANTAGES LINKED LIST:
-Advantage: Linked lists have dynamic size which makes it efficient for insertion and deletion
-Disadvantage: Linked lists store a lot of extra memory for pointers, which could add up if the commands.csv was larger
+// This code was taken from https://www.techiedelight.com/queue-implementation-cpp/
+// The code has been modified from the original to provide opportunities to learn
 
-
-ADVANTAGES/DISADVANTAGES ARRAY:
-Advantage: Arrays are static size therefore there's no need for dynamic memory allocation or deallocation
-Disadvantage: Inserting elements to the front of an array is far less effecient than inserting at the front of a linked list because you need to move all of the elements in the array over one index. 
+/*  5.
+    (1) One problem I found with the destructor was that it uses 'delete' instead of 'delete[]'. You would need to use delete[] because the array for queue was dynamicaaally allocated using 'new[]'.
+    (2) Another issue would be inadequate error handling. It would be more efficent to use exceptions.
+    (3) There could also be more comments explaing the logic of each function.
+    (4) There was also no constructor for a queue initalizing the other elements of a queue. This could lead to issues.
+    (5) Finally, the dequeue function is inefficient because it shifts the front pointer, but doesn't free the memory. 
 */
 
-#include "PA1.h"
+#include "testQueue.h"
 
+// main function
 int main()
 {
-    srand((unsigned) time(NULL));
-    List<string, string> list;
-    profile profiles[100];
-    // initialize profile array to initial values
-    for(int i = 0; i < 100; i ++)
-    {
-        profiles[i].name = "";
-        profiles[i].points = 0;
-    }
-    // load list from commands.csv file
-    loadList(list);
-    // load profiles array from profiles.csv
-    loadArray(profiles);
-    // display menu
-    displayMenu(list, profiles);
+    // call your test functions here!
 
+    testSize();
+
+    testIsEmpty();
+
+    testIsFull();
+
+    testDequeue();
+
+    testEnqueue();
+
+    testPeek();
     return 0;
 }
+
